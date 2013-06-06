@@ -1,0 +1,78 @@
+html body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	text-align: center;
+	color: #193441;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial;
+}
+div#headline {
+	height: 11px;
+	background: #fff url('/images/margin_line.png');
+}
+#presenter h3{
+	margin-bottom: -0.5em;
+}
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -11px;
+}
+.push {
+	height: 11px;
+}
+#footer {
+   height: 11px;   /* Height of the footer */
+   background: #fff url('/images/margin_line.png');
+}
+.list li img{
+	padding: 0 6px;
+}
+.list ul {
+	padding-left: 0;
+}
+.list ul li{
+	display: inline;
+}
+.list ul li a{
+	text-decoration: none;
+	color: #193441;
+	font-size: 0.85em;
+}
+.list ul li a:visited{
+	color: #193441;
+}
+#motto {
+	margin: 7% 0;
+	border-width: 20px;
+	-moz-border-image:url("/images/my_border.png") 20 21 19 21 repeat stretch;
+	-webkit-border-image:url("/images/my_border.png") 20 21 19 21 repeat stretch;
+	border-image:url("/images/my_border.png") 20 21 19 21 repeat stretch;
+	display: inline-block;
+	width: 50%;
+}
+.article {
+	width: 40%;
+	font-size: 0.8em;
+	margin: auto;
+}
+#contacts {
+	width: 35%;
+	margin: auto;
+	padding-bottom: 3%;
+}
+#contacts h4{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+#contacts ul {
+	margin-top: -13px;
+	font-size: 0.9em;
+	list-style-type: none;
+	padding-left: 0;
+}
+#contacts img{
+	width: 5px;
+	height: 5px;
+	padding-right: 7px;
+}
