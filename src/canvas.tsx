@@ -1,9 +1,9 @@
 import * as React from "react";
 import {DropTargetMonitor, useDrop} from "react-dnd";
-import {ICanvasState, IDragShape} from "./redux/reducer";
-import {DraggableShape} from "./draggableShape";
+import {ICanvasState, IDragShape} from "src/redux/reducer";
+import {DraggableShape} from "src/draggableShape";
 import {v4 as uuidv4} from "uuid";
-import {AddShape, MoveShape, SetActiveShape, ShapeTypes} from "./Constants";
+import {AddShape, MoveShape, SetActiveShape, ShapeTypes} from "src/Constants";
 import {useSelector, useDispatch} from "react-redux";
 
 export function Canvas() {

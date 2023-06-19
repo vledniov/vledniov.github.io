@@ -1,6 +1,6 @@
 import * as React from "react";
 import {useDispatch} from "react-redux";
-import {ToBackAction, ToFrontAction} from "./Constants";
+import {ToBackAction, ToFrontAction} from "src/Constants";
 
 export function Toolbox() {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import * as React from "react";
-import {ShapeTypes} from "./Constants";
-import {IDragShape} from "./redux/reducer";
+import {ShapeTypes} from "src/Constants";
+import {IDragShape} from "src/redux/reducer";
 
 export function DraggableShape(props: IDragShape & React.SVGProps<SVGSVGElement | SVGRectElement | SVGCircleElement>) {
   const {type, x, y, isActive, onMouseDown} = props;

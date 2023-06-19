@@ -4,11 +4,11 @@ import {Shape} from "src/shape";
 import {ShapeTypes} from "src/Constants";
 import {HTML5Backend} from "react-dnd-html5-backend";
 import {DndProvider} from "react-dnd";
-import {Canvas} from "./canvas";
-import {Toolbox} from "./toolbox";
+import {Canvas} from "src/canvas";
+import {Toolbox} from "src/toolbox";
 import {Provider} from "react-redux";
 import {legacy_createStore as createStore} from "redux";
-import {reducer} from "./redux/reducer";
+import {reducer} from "src/redux/reducer";
 
 export function App() {
   const store = createStore(reducer);
