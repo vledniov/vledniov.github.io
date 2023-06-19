@@ -2,7 +2,6 @@
   "name": "bootcamp_editor",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vledniov.github.io/react-draggable",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,15 +15,12 @@
     "react-redux": "^8.1.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2",
     "tslint": "^5.20.1",
     "tslint-microsoft-contrib": "^5.0.3",
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.2",
-    "gh-pages": "^5.0.0"
+    "@types/uuid": "^9.0.2"
   }
 }

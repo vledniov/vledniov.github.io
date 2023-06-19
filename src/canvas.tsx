@@ -3,10 +3,8 @@ import {DropTargetMonitor, useDrop} from "react-dnd";
 import {ICanvasState, IDragShape} from "./redux/reducer";
 import {DraggableShape} from "./draggableShape";
 import {v4 as uuidv4} from "uuid";
-import {AddShapeAction, MoveShapeAction, SetActiveShapeAction, ShapeTypes} from "./Constants";
+import {AddShape, MoveShape, SetActiveShape, ShapeTypes} from "./Constants";
 import {useSelector, useDispatch} from "react-redux";
-import {AddShape} from "./redux/actions";
-import {Store} from "./redux/store";
 
 export function Canvas() {
   const ref = React.useRef<HTMLInputElement>(null);
@@ -24,23 +22,15 @@ export function Canvas() {
         return;
       }
 
-      Store.dispatch(
-        AddShape({
+      dispatch({
+        type: AddShape,
+        payload: {
           x: offset.x - rect.x,
           y: offset.y - rect.y,
           id: uuidv4(),
           kind: droppedObject.type,
-        })
-      );
-      // dispatch({
-      //   type: AddShapeAction,
-      //   payload: {
-      //     x: offset.x - rect.x,
-      //     y: offset.y - rect.y,
-      //     id: uuidv4(),
-      //     kind: droppedObject.type,
-      //   },
-      // });
+        },
+      });
     },
   }));
 
@@ -52,7 +42,7 @@ export function Canvas() {
     let outBoundRect = ref.current?.getBoundingClientRect();
 
     dispatch({
-      type: MoveShapeAction,
+      type: MoveShape,
       payload: {id: draggedShapeId, x: e.clientX - outBoundRect!.x, y: e.clientY - outBoundRect!.y},
     });
   };
@@ -60,7 +50,7 @@ export function Canvas() {
   const handleMouseDown = (id: string) => {
     return () => {
       setDraggedShapeId(id);
-      dispatch({type: SetActiveShapeAction, payload: {id: id}});
+      dispatch({type: SetActiveShape, payload: {id: id}});
     };
   };
 

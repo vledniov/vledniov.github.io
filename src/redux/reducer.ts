@@ -1,4 +1,4 @@
-import {ToBackAction, ToFrontAction, AddShapeAction, MoveShapeAction, ShapeSpecificConfigs, SetActiveShapeAction} from "src/Constants";
+import {ToBackAction, ToFrontAction, AddShape, MoveShape, ShapeSpecificConfigs, SetActiveShape} from "src/Constants";
 
 export interface IDragShape {
   id: string;
@@ -26,33 +26,27 @@ interface CommonAction {
   }
 }
 
-interface AddAction {
-  type: string
-  payload: ICanvasState
-}
-
 const getActiveShape = (state: ICanvasState): IDragShape => {
   return state.shapes.find(shape => (shape.isActive))!
 }
 
-export const reducer = (state = INITIAL_STATE, action: CommonAction & AddAction): ICanvasState => {
+export const reducer = (state = INITIAL_STATE, action: CommonAction): ICanvasState => {
   switch (action.type) {
-    case AddShapeAction:
-      // let adjusted = ShapeSpecificConfigs[action.payload.kind].centerPosition;
-      // const newObject: IDragShape = {
-      //   type: action.payload.kind,
-      //   x: action.payload.x - adjusted,
-      //   y: action.payload.y - adjusted,
-      //   id: action.payload.id,
-      //   isActive: true,
-      // };
+    case AddShape:
+      let adjusted = ShapeSpecificConfigs[action.payload.kind].centerPosition;
+      const newObject: IDragShape = {
+        type: action.payload.kind,
+        x: action.payload.x - adjusted,
+        y: action.payload.y - adjusted,
+        id: action.payload.id,
+        isActive: true,
+      };
 
-      // const prevShapes = state.shapes.map((shape) => {
-      //   return {...shape, isActive: false};
-      // });
-      // return {shapes: [...prevShapes, newObject]}
-      return {shapes: action.payload.shapes}
-    case MoveShapeAction:
+      const prevShapes = state.shapes.map((shape) => {
+        return {...shape, isActive: false};
+      });
+      return {shapes: [...prevShapes, newObject]}
+    case MoveShape:
       return {shapes: state.shapes.map((shape) => {
         if (shape.id === action.payload.id) {
           let adjusted = ShapeSpecificConfigs[shape.type].centerPosition;
@@ -60,7 +54,7 @@ export const reducer = (state = INITIAL_STATE, action: CommonAction & AddAction)
         }
         return shape;
       })}
-    case SetActiveShapeAction:
+    case SetActiveShape:
         return {shapes: state.shapes.map((shape) => {
           if (shape.id === action.payload.id) {
             return {...shape, isActive: true};

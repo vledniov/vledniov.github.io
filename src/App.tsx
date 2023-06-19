@@ -7,14 +7,14 @@ import {DndProvider} from "react-dnd";
 import {Canvas} from "./canvas";
 import {Toolbox} from "./toolbox";
 import {Provider} from "react-redux";
-// import {applyMiddleware, legacy_createStore as createStore} from "redux";
-// import {reducer} from "./redux/reducer";
-// import thunk from "redux-thunk";
-import {Store} from "./redux/store";
+import {legacy_createStore as createStore} from "redux";
+import {reducer} from "./redux/reducer";
 
 export function App() {
+  const store = createStore(reducer);
+
   return (
-    <Provider store={Store}>
+    <Provider store={store}>
       <DndProvider backend={HTML5Backend}>
         <div className="editor">
           <div className="palette">

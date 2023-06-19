@@ -20,10 +20,6 @@ Provide a **working PR for each individual step** in the order below and assign 
 
 You can either use existing setup in this repo (`create-react-app`), or start from scratch.
 
-### Timebox
-
-You are limited to **2 weeks** to complete the project.
-
 ### Optional steps
 
 If you have enought time, you can experiment and add more features to the project, like more key combinations (undo, redo, copy, paste, cut, move, etc.)
@@ -53,12 +49,3 @@ Try covering parts of the code with tests using a technology of your choice.
 - [Project setup: Typescript, Webpack and React](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html). Provides a brief overview of setting up a project using NPM, Typescript, Webpack and React.
 - [Drawing shapes in SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes). SVG is used to render the canvas area and its elements. It’s a vector based format that can be used to output high-quality, scalable images for print.
 - [Unidirectional data flow](https://staltz.com/unidirectional-user-interface-architectures.html). Unidirectional data flow is the process of triggering actions from user interaction events, updating the state based on these action, and modifying the DOM with the updated state. This is the high level concept behind Redux applications. Note: this post is tailored to Flux based apps, but is applicable to Redux as well.
-
-## Examples
-
-Some completed project examples:
-
-- https://vlebedeff.github.io/ts-training/
-- https://gutulvadim.github.io/
-- https://ardevelop.github.io/pre-flexit-training/
-- http://www.barushev.net/shaper/builds/7/
