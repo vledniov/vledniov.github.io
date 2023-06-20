@@ -6,13 +6,13 @@ interface ShapeProps {
 }
 
 export function Shape(props: ShapeProps) {
-  const type = props.type;
+  const {type} = props;
   const svgLocation = `assets/shapes.svg#${type}`;
 
   const [{isDragging}, drag] = useDrag(
     () => ({
       type: type,
-      item: {type: type},
+      item: {type},
       collect: (monitor) => ({
         isDragging: !!monitor.isDragging(),
       }),

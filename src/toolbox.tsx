@@ -1,15 +1,17 @@
 import * as React from "react";
 import {useDispatch} from "react-redux";
+import {Dispatch} from "redux";
 import {ToBackAction, ToFrontAction} from "src/Constants";
+import {ChangeZIndex} from "src/redux/actions";
 
 export function Toolbox() {
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
   const toBackHandler = () => {
-    dispatch({type: ToBackAction});
+    dispatch(ChangeZIndex(ToBackAction));
   };
 
   const toFrontHandler = () => {
-    dispatch({type: ToFrontAction});
+    dispatch(ChangeZIndex(ToFrontAction));
   };
 
   return (

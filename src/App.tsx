@@ -7,11 +7,14 @@ import {DndProvider} from "react-dnd";
 import {Canvas} from "src/canvas";
 import {Toolbox} from "src/toolbox";
 import {Provider} from "react-redux";
-import {legacy_createStore as createStore} from "redux";
-import {reducer} from "src/redux/reducer";
+import {applyMiddleware, Store, legacy_createStore as createStore} from "redux";
+import {CommonAction, ICanvasState, reducer} from "src/redux/reducer";
+import thunk from "redux-thunk";
 
 export function App() {
-  const store = createStore(reducer);
+  const store: Store<ICanvasState, CommonAction> & {
+    dispatch: (args: any) => void;
+  } = createStore(reducer, applyMiddleware(thunk));
 
   return (
     <Provider store={store}>

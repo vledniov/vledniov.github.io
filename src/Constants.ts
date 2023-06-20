@@ -6,9 +6,9 @@ export enum ShapeTypes {
 
 export const ToBackAction = "shapes/moveToBack"
 export const ToFrontAction = "shapes/moveToFront"
-export const AddShape = "shapes/add"
-export const MoveShape = "shapes/move"
-export const SetActiveShape = "shapes/setActive"
+export const AddShapeAction = "shapes/add"
+export const MoveShapeAction = "shapes/move"
+export const SetActiveShapeAction = "shapes/setActive"
 
 interface CenterPosition {
     centerPosition: number

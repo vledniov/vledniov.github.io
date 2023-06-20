@@ -3,13 +3,15 @@ import {DropTargetMonitor, useDrop} from "react-dnd";
 import {ICanvasState, IDragShape} from "src/redux/reducer";
 import {DraggableShape} from "src/draggableShape";
 import {v4 as uuidv4} from "uuid";
-import {AddShape, MoveShape, SetActiveShape, ShapeTypes} from "src/Constants";
+import {MoveShapeAction, SetActiveShapeAction, ShapeTypes} from "src/Constants";
 import {useSelector, useDispatch} from "react-redux";
+import {AddShape} from "src/redux/actions";
+import {Dispatch} from "redux";
 
 export function Canvas() {
   const ref = React.useRef<HTMLInputElement>(null);
   const [draggedShapeId, setDraggedShapeId] = React.useState<string | undefined>(undefined);
-  const dispatch = useDispatch();
+  const dispatch: Dispatch<any> = useDispatch();
   const shapes = useSelector((state: ICanvasState) => state.shapes)!;
 
   // handles the drag and drop case for the shape from the toolbar
@@ -22,15 +24,15 @@ export function Canvas() {
         return;
       }
 
-      dispatch({
-        type: AddShape,
-        payload: {
+      dispatch(
+        AddShape({
           x: offset.x - rect.x,
           y: offset.y - rect.y,
           id: uuidv4(),
-          kind: droppedObject.type,
-        },
-      });
+          type: droppedObject.type,
+          isActive: true,
+        })
+      );
     },
   }));
 
@@ -39,18 +41,19 @@ export function Canvas() {
       return;
     }
 
-    let outBoundRect = ref.current?.getBoundingClientRect();
+    let {clientX, clientY} = e;
+    let {x, y} = ref.current?.getBoundingClientRect()!;
 
     dispatch({
-      type: MoveShape,
-      payload: {id: draggedShapeId, x: e.clientX - outBoundRect!.x, y: e.clientY - outBoundRect!.y},
+      type: MoveShapeAction,
+      payload: {id: draggedShapeId, x: clientX - x, y: clientY - y},
     });
   };
 
   const handleMouseDown = (id: string) => {
     return () => {
       setDraggedShapeId(id);
-      dispatch({type: SetActiveShape, payload: {id: id}});
+      dispatch({type: SetActiveShapeAction, payload: {id}});
     };
   };
 
